@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "581793218120",
+    "firebase_url": "https://prey-apk2.firebaseio.com",
+    "project_id": "prey-apk2",
+    "storage_bucket": "prey-apk2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581793218120:android:72adf41b2602dfd980227d",
+        "android_client_info": {
+          "package_name": "com.oso.myfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8BP6nSHUqPgVKUxxPreDw-OOqAsDoJjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581793218120:android:283846145c48590680227d",
+        "android_client_info": {
+          "package_name": "com.prey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8BP6nSHUqPgVKUxxPreDw-OOqAsDoJjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
