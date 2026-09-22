@@ -1,0 +1,9 @@
+package com.oso.myfirebase.navigation
+
+sealed class NavRoute(val route: String){
+
+    data object  Login: NavRoute("login")
+    data object  Register: NavRoute("register")
+    data object  Home: NavRoute("home")
+
+}

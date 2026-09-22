@@ -4,13 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.oso.myfirebase.auth.AuthViewModel
+import com.oso.myfirebase.navigation.AppNavHost
 import com.oso.myfirebase.ui.theme.MyFirebaseTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,29 +19,14 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyFirebaseTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                val authVM: AuthViewModel= hiltViewModel()
+                val user by authVM.user.collectAsState()
+                AppNavHost(
+                    //user!=null -> el usuario esta autenticado -> se abre pantalla "Home"
+                    //user==null -> el usuario no esta autenticado -> se abre pantalla "Login"
+                    startOnHome = user != null
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyFirebaseTheme {
-        Greeting("Android")
     }
 }
