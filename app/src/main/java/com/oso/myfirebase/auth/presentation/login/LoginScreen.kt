@@ -1,5 +1,6 @@
 package com.oso.myfirebase.auth.presentation.login
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,11 +12,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -26,9 +30,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.oso.myfirebase.R
 import kotlinx.coroutines.flow.collectLatest
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -52,7 +58,11 @@ fun LoginScreen(onGotoRegister: () -> Unit, onLoggedIn: () -> Unit, vm: LoginVie
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Login") }
+                title = { Text(text = "Login") },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary
+                )
             )
         }
     ) { paddingValues ->
@@ -64,6 +74,15 @@ fun LoginScreen(onGotoRegister: () -> Unit, onLoggedIn: () -> Unit, vm: LoginVie
                 .padding(24.dp),
             verticalArrangement = Arrangement.Center
         ) {
+
+            Image(
+                painter = painterResource(R.drawable.login),
+                contentDescription = "Login",
+                modifier = Modifier
+                    .size(120.dp)
+                    .padding(16.dp)
+                    .align (Alignment.CenterHorizontally)
+            )
 
             OutlinedTextField(
                 value = email,
